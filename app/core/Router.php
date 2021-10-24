@@ -12,10 +12,10 @@ class Router
 
     $url = $this->splitUrl(); // Split the URL
 
-    $this->getControllerFromUrl($url); // Grab the controller from the URL
-    $this->getMethodFromUrl($url); // Grab the method from the URL
-    $this->getParamsFromUrl($url); // Grab the params from the URL
-    $this->runControllerAndMethod($url); // Run the controller and method
+    $url = $this->getControllerFromUrl($url); // Grab the controller from the URL
+    $url = $this->getMethodFromUrl($url); // Grab the method from the URL
+    $url = $this->getParamsFromUrl($url); // Grab the params from the URL
+    $url = $this->runControllerAndMethod($url); // Run the controller and method
   }
 
 
@@ -48,7 +48,7 @@ class Router
    * @param array $url
    * @return void
    */
-  private function getMethodFromUrl(array $url): void
+  private function getMethodFromUrl(array $url): array
   {
     if (isset($url[1])) {
 
@@ -57,6 +57,7 @@ class Router
         unset($url[1]);
       }
     }
+    return $url;
   }
 
   /**
@@ -67,15 +68,16 @@ class Router
    * @param array $url
    * @return void
    */
-  private function getControllerFromUrl(array $url): void
+  private function getControllerFromUrl(array $url): array
   {
-    if (file_exists("../app/controllers/" . strtolower($url[0]) . ".php")) {
+    if (file_exists("../app/controllers/" . ucfirst(strtolower($url[0])) . ".php")) {
       $this->controller = ucfirst(strtolower($url[0]));
       unset($url[0]);
     }
 
     require "../app/controllers/{$this->controller}.php";
-    $this->controller = new $this->controller();
+    $this->controller = new $this->controller;
+    return $url;
   }
 
   /**
@@ -87,6 +89,7 @@ class Router
    */
   private function splitUrl(): array
   {
-    return explode("/", filter_var(trim($_GET['url'], "/"), FILTER_SANITIZE_URL));
+    $url = isset($_GET['url']) ? $_GET['url'] : "home";
+    return explode("/", filter_var(trim($url, "/"), FILTER_SANITIZE_URL));
   }
 }

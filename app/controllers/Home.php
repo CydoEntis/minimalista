@@ -1,9 +1,9 @@
 <?php
 
-class Home
+class Home extends Controller
 {
-  public function index()
+  public function index($page = "")
   {
-    echo "Home page index method";
+    $this->view("home");
   }
 }
