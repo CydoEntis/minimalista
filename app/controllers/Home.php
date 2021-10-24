@@ -4,6 +4,7 @@ class Home extends Controller
 {
   public function index($page = "")
   {
-    $this->view("home");
+    $data['page_title'] = "Home Page";
+    $this->view("home", $data);
   }
 }

@@ -6,10 +6,11 @@ class Controller
    * Check to see if a view exists
    * If it does display otherwise 404
    *
-   * @param string $view
+   * @param string $view 
+   * @param array $data
    * @return void
    */
-  protected function view(string $view): void
+  protected function view(string $view, array $data = []): void
   {
     if (file_exists("../app/views/{$view}.php")) {
       include "../app/views/{$view}.php";
