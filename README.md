@@ -1,1 +1,1 @@
-# minima
+# minimalista
