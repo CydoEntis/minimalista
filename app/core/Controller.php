@@ -24,7 +24,7 @@ class Controller
    * if it does instantiate the model
    *
    * @param string $model
-   * @return void
+   * 
    */
   protected function loadModel($model)
   {
