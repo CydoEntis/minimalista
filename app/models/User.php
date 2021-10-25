@@ -32,9 +32,15 @@ class User
     $_SESSION['error'] = '';
 
     if (isset($post['username']) && isset($post['password'])) {
-      $arr = ['username' => $post['username'], 'password' => $post['password'], 'email' => $post['email']];
+      $arr = [
+        'username' => $post['username'],
+        'password' => $post['password'],
+        'email' => $post['email'],
+        'url_address' => get_random_string_max(60),
+        'date' => date("Y-m-d H:i:s"),
+      ];
 
-      $sql = "INSERT INTO users (username, email, password) values (:username, :email, :password)";
+      $sql = "INSERT INTO users (username, email, password, url_address, date) values (:username, :email, :password, :url_address, :date)";
       $data = $db->write($sql, $arr);
 
       if ($data) {

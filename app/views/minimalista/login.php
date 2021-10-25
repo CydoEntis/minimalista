@@ -15,6 +15,9 @@ $this->view("minimalista/header", $data);
           <input name="password" class="subject" type="password" placeholder="password" required>
           <p class="subject-error form-error">Please enter a valid password</p>
         </div>
+        <div class="s-12 margin-bottom-20 ">
+          <p style="color: red"><?php checkMessage() ?></p>
+        </div>
         <div class="s-12">
           <a href="signup" class="margin-bottom-20">Don't have an account? Sign up here!</a>
         </div>
