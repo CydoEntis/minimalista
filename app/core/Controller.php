@@ -26,7 +26,7 @@ class Controller
    * @param string $model
    * @return void
    */
-  protected function loadModel(string $model)
+  protected function loadModel($model)
   {
     if (file_exists("../app/models/{$model}.php")) {
       include "../app/models/{$model}.php";

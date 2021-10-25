@@ -12,12 +12,8 @@ $this->view("minimalista/header", $data);
           <p class="subject-error form-error">Please enter a username.</p>
         </div>
         <div class="s-12">
-          <input name="email" class="subject" placeholder="Email" title="email" type="email" required>
-          <p class="subject-error form-error">Please enter an email.</p>
-        </div>
-        <div class="s-12">
           <input name="password" class="subject" type="password" placeholder="password" required>
-          <p class="subject-error form-error">Invalid password, please try again.</p>
+          <p class="subject-error form-error">Please enter a valid password</p>
         </div>
         <div class="s-12">
           <a href="signup" class="margin-bottom-20">Don't have an account? Sign up here!</a>
