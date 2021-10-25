@@ -26,6 +26,16 @@ class User
     }
   }
 
+  public function logout()
+  {
+    unset($_SESSION['username']);
+    unset($_SESSION['user_url']);
+
+    header("Location:" . ROOT . "login");
+    die();
+  }
+
+
   public function signUp($post)
   {
     $db = new Database();
